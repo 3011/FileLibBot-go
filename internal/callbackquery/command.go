@@ -12,14 +12,6 @@ func commandMyFile(formID int64, offset int, editMsgID int) {
 	// sqlite.CreateFile()
 	var userFiles []sqlite.User_File
 	hasNext := sqlite.FindUserFiles(&userFiles, formID, offset)
-	fmt.Printf("userFiles: %v\n", userFiles)
-	// var files []sqlite.File
-	// for _, v := range userFiles {
-	// 	var file sqlite.File
-	// 	file.ID = v.ID
-	// 	sqlite.FindFile(&file)
-	// 	files = append(files, file)
-	// }
 
 	var text string
 	if len(userFiles) != 0 {
@@ -37,7 +29,6 @@ func commandMyFile(formID int64, offset int, editMsgID int) {
 	if editMsgID == 0 {
 		msg := tgbotapi.NewMessage(formID, text)
 		msg.ParseMode = "Markdown"
-		// bottonLast := tgbotapi.NewInlineKeyboardButtonData("Last", "page last "+strconv.Itoa(offset-1))
 
 		if offset > 0 || hasNext {
 			var botton []tgbotapi.InlineKeyboardButton
@@ -78,7 +69,6 @@ func deleteFile(userId int64, fileUniqueID string) {
 
 func formatFileSize(fileSize int) (size string) {
 	if fileSize < 1024 {
-		//return strconv.FormatInt(fileSize, 10) + "B"
 		return fmt.Sprintf("%.2fB", float64(fileSize)/float64(1))
 	} else if fileSize < (1024 * 1024) {
 		return fmt.Sprintf("%.2fKB", float64(fileSize)/float64(1024))

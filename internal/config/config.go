@@ -9,6 +9,7 @@ import (
 var Config = struct {
 	BotToken       string `required:"true"`
 	ForwardGroupID int64  `required:"true"`
+	DBFileName     string `default:"FileLibBot.db"`
 }{}
 
 func Init() {

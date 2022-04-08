@@ -1,6 +1,7 @@
 package sqlite
 
 import (
+	"github.com/3011/FileLibBot-go/internal/config"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -33,7 +34,7 @@ type User_File struct {
 
 func InitDB() {
 	var err error
-	db, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	db, err = gorm.Open(sqlite.Open(config.Config.DBFileName), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}

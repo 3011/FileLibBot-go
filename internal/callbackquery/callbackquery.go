@@ -15,7 +15,7 @@ func Init(botAPI *tgbotapi.BotAPI) {
 
 func Handle(callbackQuery *tgbotapi.CallbackQuery) {
 	if callbackQuery.Message.Chat.ID != callbackQuery.From.ID {
-		msg := tgbotapi.NewCallback(callbackQuery.ID, "这不是你的消息")
+		msg := tgbotapi.NewCallback(callbackQuery.ID, "This is not your message.")
 		bot.Send(msg)
 	}
 

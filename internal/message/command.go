@@ -89,7 +89,7 @@ func newDocumentFile(message *tgbotapi.Message) {
 	}
 
 	msg := tgbotapi.NewCopyMessage(message.Chat.ID, message.Chat.ID, message.MessageID)
-	msg.Caption = "[" + fileName + "](https://t.me/filelibbot?start=file" + message.Document.FileUniqueID + ")" + "\n" + formatFileSize(message.Document.FileSize)
+	msg.Caption = "[" + fileName + "](https://t.me/filelibbot?start=startfile" + message.Document.FileUniqueID + ")" + "\n" + formatFileSize(message.Document.FileSize)
 	msg.ParseMode = "Markdown"
 	bot.Send(msg)
 
@@ -118,7 +118,7 @@ func newVideoFile(message *tgbotapi.Message) {
 	}
 
 	msg := tgbotapi.NewCopyMessage(message.Chat.ID, message.Chat.ID, message.MessageID)
-	msg.Caption = "[" + fileName + "](https://t.me/filelibbot?start=file" + message.Video.FileUniqueID + ")" + "\n" + formatFileSize(message.Video.FileSize)
+	msg.Caption = "[" + fileName + "](https://t.me/filelibbot?start=startfile" + message.Video.FileUniqueID + ")" + "\n" + formatFileSize(message.Video.FileSize)
 	msg.ParseMode = "Markdown"
 	bot.Send(msg)
 
@@ -142,7 +142,7 @@ func newPhotoFile(message *tgbotapi.Message) {
 
 	fileName := "Photo_" + photo.FileUniqueID
 	msg := tgbotapi.NewCopyMessage(message.Chat.ID, message.Chat.ID, message.MessageID)
-	msg.Caption = "[" + fileName + "](https://t.me/filelibbot?start=file" + photo.FileUniqueID + ")" + "\n" + formatFileSize(photo.FileSize)
+	msg.Caption = "[" + fileName + "](https://t.me/filelibbot?start=startfile" + photo.FileUniqueID + ")" + "\n" + formatFileSize(photo.FileSize)
 	msg.ParseMode = "Markdown"
 	bot.Send(msg)
 

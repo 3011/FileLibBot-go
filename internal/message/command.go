@@ -172,12 +172,13 @@ func sendFile(fromId int64, fileUniqueId string) {
 		botton1 := tgbotapi.NewInlineKeyboardButtonData("Delete", "del "+fileUniqueId)
 		msg.ReplyMarkup = tgbotapi.NewInlineKeyboardMarkup([]tgbotapi.InlineKeyboardButton{botton1})
 		bot.Send(msg)
+
+		userFile := sqlite.User_File{User_id: fromId, File_unique_id: file.File_unique_id, File_name: file.File_name, File_size: file.File_size}
+		sqlite.FindUserFile(&userFile)
 	} else {
 		msg := tgbotapi.NewMessage(fromId, "File not found!")
 		bot.Send(msg)
 	}
-	userFile := sqlite.User_File{User_id: fromId, File_unique_id: file.File_unique_id, File_name: file.File_name, File_size: file.File_size}
-	sqlite.FindUserFile(&userFile)
 }
 
 func deleteFile(userId int64, fileUniqueID string) {

@@ -36,14 +36,14 @@ func BotStart() {
 
 	for update := range updates {
 		if update.CallbackQuery != nil {
-			callbackquery.Handle(update.CallbackQuery)
+			go callbackquery.Handle(update.CallbackQuery)
 		}
 
 		if update.InlineQuery != nil {
 		}
 
 		if update.Message != nil {
-			message.Handle(update.Message)
+			go message.Handle(update.Message)
 		}
 	}
 }

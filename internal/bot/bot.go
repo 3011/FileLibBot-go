@@ -46,4 +46,7 @@ func BotStart() {
 			go message.Handle(update.Message)
 		}
 	}
+
 }
+
+// 冒泡排序

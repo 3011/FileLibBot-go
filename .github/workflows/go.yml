@@ -19,7 +19,7 @@ jobs:
         go-version: 1.17
 
     - name: Build Linux version
-      run: go build -o FileLibBot-go ./cmd/.
+      run: go build -o FileLibBot-go .
 
     # - name: Build macOS version
     #   run: CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o FileLibBot-go_macos
